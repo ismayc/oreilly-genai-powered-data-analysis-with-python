@@ -4,10 +4,10 @@
 
 The major files in this repository are
 - `slides.pdf`: PDF version of the slides used in this course to motivate the code.
-- `economies.csv` and `economies.xlsx`: Two different versions of the same data for code walkthroughs, one as Comma-Separated Values and the other as a Microsoft Excel file
-- `populations.csv` and `populations.xlsx`: Two different versions of the same data for student exercises.
+- `economies.csv`: Data for code walkthroughs, one as Comma-Separated Values and the other as a Microsoft Excel file
+- `populations.csv`: Data for student exercises.
 - `exercises.ipynb`: A Jupyter Notebook with pseudocode/instructions provide to be filled in for code walkthroughs and student exercises
-- `exercises_solutions.ipynb`: A Jupyter Notebook with answers to the code walkthroughs and exercises. An HTML version of these solutions is available at https://ismay-oreilly-dap.netlify.app/exercises_solutions.html and is the recommended way to view solutions.
+- `exercises_solutions.ipynb`: A Jupyter Notebook with answers to the code walkthroughs and exercises. An HTML version of these solutions is available at https://ismay-oreilly-aidap.netlify.app/exercises_solutions.html and is the recommended way to view solutions.
 
 ## Recommended instructions on getting set up with Python and Jupyter Notebook
 
@@ -57,9 +57,10 @@ Alternatively, I've set up some temporary notebooks on Binder [here](https://myb
     from plotly.subplots import make_subplots
     
     # For plotly to load directly in Jupyter notebook
-    import plotly.io as pio
-    pio.renderers.default = 'iframe'
+    import plotly.offline as pyo
+    pyo.init_notebook_mode(connected=True)
     ```
+    
   - Run the cell (`Shift + Enter`). If no errors appear, the libraries are installed correctly.
 
 ## Tips for Using ChatGPT Effectively During the Course
