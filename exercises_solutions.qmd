@@ -1,11 +1,16 @@
 ---
 title: 'Walkthroughs and Exercises for GenAi-Powered Data Analysis in Python'  
 author: "Dr. Chester Ismay"  
-# format: html
-# engine: knitr  
-engine: jupyter
 format:
-  ipynb: default
+  html:
+    toc: true
+    toc-location: left   # options: left, right, body, left-body, right-body
+    toc-depth: 2         # optional
+    toc-title: Contents  # optional
+engine: knitr  
+# engine: jupyter
+# format:
+#   ipynb: default
 ---
 
 ```{python}
