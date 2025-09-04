@@ -555,8 +555,8 @@ plt.show();
 ```{python}
 plt.figure(figsize=(10, 3))
 sns.boxplot(x='gdp_percapita', y='income_group', data=economies)
-plt.xlabel('Income Group')
-plt.ylabel('GDP Per Capita')
+plt.xlabel('GDP Per Capita')
+plt.ylabel('Income Group')
 plt.title('Boxplot of GDP Per Capita by Income Group')
 plt.show();
 ```
@@ -566,8 +566,8 @@ plt.show();
 ```{python}
 plt.figure(figsize=(10, 3))
 sns.violinplot(x='gdp_percapita', y='income_group', data=economies)
-plt.xlabel('Income Group')
-plt.ylabel('GDP Per Capita')
+plt.xlabel('GDP Per Capita')
+plt.ylabel('Income Group')
 plt.title('Violin Plot of GDP Per Capita by Income Group')
 plt.show();
 ```
