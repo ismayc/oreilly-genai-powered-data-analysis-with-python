@@ -5,3 +5,5 @@
 .DS_Store
 prompt_issues.md
 *with_notes*
+*.pptx
+.jupyterlite.doit.db

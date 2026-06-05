@@ -1,18 +1,38 @@
 ---
-title: 'Walkthroughs and Exercises for GenAI-Powered Data Analysis in Python'  
-author: "Dr. Chester Ismay"  
-#format: html
-#engine: knitr 
-engine: jupyter
+title: "Walkthroughs and Exercises for GenAI-Powered Data Analysis with Python"
+author: "Dr. Chester Ismay"
 format:
+  html:
+    theme: flatly
+    toc: true
+    toc-floating: true
   ipynb: default
+engine: jupyter
+execute:
+  warning: false
 ---
 
+```{python}
+#| eval: false
+!pip install pandas matplotlib seaborn plotly
+```
+
+```{python}
+#| include: false
+import pandas as pd
+
+# Display all columns
+pd.set_option('display.max_columns', None)
+
+# Display all outputs from each cell
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
+```
 # Data Analytics Kickoff + Course Goals
 
-## Walkthrough #1: Setting Up the Python Environment
+## Walkthrough: Setting Up the Python Environment
 
-If you haven't already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so [here](https://github.com/ismayc/oreilly-genai-powered-data-analysis-with-python/blob/main/README.md). 
+If you haven't already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so [here](https://github.com/ismayc/oreilly-genai-powered-data-analysis-with-python/blob/main/README.md).
 
 If you aren't able to do this on your machine, you may want to check out [Google Colab](https://colab.research.google.com/). It's a free service that allows you to run Jupyter notebooks in the cloud.
 
@@ -31,9 +51,9 @@ import plotly.offline as pyo
 pyo.init_notebook_mode(connected=True)
 ```
 
-## Exercise #1: Setting Up the Python Environment
+## Exercise: Setting Up the Python Environment
 
-Follow the instructions above in Walkthrough #1 to check for correct installation 
+Follow the instructions above in Walkthrough to check for correct installation
 of necessary packages. We'll wait a few minutes to make sure as many of you are
 set up as possible. Please give a thumbs up in the pulse check if you are ready
 to move on.
@@ -50,7 +70,7 @@ of it throughout the course, and I'll give tips along the way too.
 
 # Module 1: Data Wrangling with Pandas
 
-## Walkthrough #2: Cleaning and Preparing Data with Pandas
+## Walkthrough 1.1: Cleaning and Preparing Data with Pandas
 
 ### Import data from a CSV or from an Excel file
 
@@ -168,7 +188,7 @@ economies_fill_value = economies.fillna({
 
 ```
 
-## Exercise #2: Cleaning and Preparing Data with Pandas
+## Exercise 1.1: Cleaning and Preparing Data with Pandas
 
 ```{python}
 # Load the populations data from a CSV file
@@ -214,7 +234,7 @@ economies_fill_value = economies.fillna({
 #### Replace missing values with specific value
 
 ```{python}
-# Replace missing values with a specific value (e.g., 0 for numerical columns, 
+# Replace missing values with a specific value (e.g., 0 for numerical columns,
 # 'Unknown' for categorical columns)
 
 
@@ -262,15 +282,29 @@ economies_fill_value = economies.fillna({
 ```
 
 ```{python}
-# Filter the DataFrame to include only rows where the 
+# Filter the DataFrame to include only rows where the
 # 'fertility_rate' is greater than 2
 
 
 ```
 
+> **Common Pitfall:** Methods like `.dropna()` and `.fillna()` return a *new* DataFrame and leave the original untouched unless you assign the result back (e.g., `populations = populations.dropna()`). If your "cleaning" seems to have no effect, check whether you forgot to capture the return value.
+
+> **Common Pitfall:** Filling missing numbers with `0` quietly changes your data's meaning -- a country with a missing GDP is not a country with a GDP of zero. Decide whether dropping, zero-filling, or mean/median-filling is honest for your analysis before you reach for `.fillna(0)`.
+
+### Self-Check
+
+By the end of this module, you should be able to:
+
+- [ ] Load a CSV into a pandas DataFrame and inspect it with `.head()`, `.info()`, and `.describe()`
+- [ ] Handle missing values by dropping rows (`.dropna()`) or filling them (`.fillna()`), and explain the tradeoff
+- [ ] Convert a column between data types with `.astype()` and rename columns with `.rename()`
+- [ ] Filter rows on a single condition and on multiple conditions combined with `&` / `|`
+- [ ] Recognize when a pandas operation returns a new object versus modifying in place
+
 # Module 2: Transforming and Aggregating Data with Pandas
 
-## Walkthrough #3: Summarizing Data with Pandas
+## Walkthrough 2.1: Summarizing Data with Pandas
 
 ### Grouping data
 
@@ -304,7 +338,7 @@ economies_fill_value = economies.fillna({
 ### Summary tables
 
 ```{python}
-# Create a pivot table of gdp_percapita and inflation_rate 
+# Create a pivot table of gdp_percapita and inflation_rate
 # by income_group and year
 
 
@@ -314,7 +348,7 @@ economies_fill_value = economies.fillna({
 
 ```
 
-### Analyzing categorical data 
+### Analyzing categorical data
 
 #### Using cross-tabulation
 
@@ -332,7 +366,7 @@ economies_fill_value = economies.fillna({
 
 ```
 
-## Exercise #3: Summarizing Data with Pandas
+## Exercise 2.1: Summarizing Data with Pandas
 
 ### Grouping Data
 
@@ -392,6 +426,20 @@ economies_fill_value = economies.fillna({
 
 ```
 
+> **Common Pitfall:** When you call `.agg()` or `.groupby(...).agg()`, make sure you are grouping on the key you actually mean (e.g., `continent` vs. `region`). Grouping on the wrong column gives you a perfectly valid-looking table that answers the wrong question.
+
+> **Common Pitfall:** `pd.pivot_table()` silently averages with `aggfunc='mean'` by default. If your summary numbers look surprising, confirm which aggregation function is being applied -- a "mean of counts" is rarely what you want.
+
+### Self-Check
+
+By the end of this module, you should be able to:
+
+- [ ] Group rows with `.groupby()` and compute a summary statistic per group
+- [ ] Apply a function element-wise to a column with `.map()`
+- [ ] Use `.agg()` to apply different aggregations to different columns
+- [ ] Build a summary grid with `pd.pivot_table()` and choose its index, columns, and `aggfunc`
+- [ ] Count categories with `pd.crosstab()` and `.value_counts()`
+
 ---
 
 # Module 3: Exploring and Learning from Mistakes
@@ -400,7 +448,11 @@ Use the provided prompt (`prompt.md` on GitHub) as your initial guide. Here are 
 you'll attempt to use LLMs to help you debug. Make sure to run the code in
 Jupyter first and then try to debug!
 
-## Walkthrough and Exercise #4: Debug with GenAI
+> **Common Pitfall:** Pasting just "it broke" or a one-line error into ChatGPT rarely helps. Include the full traceback, the code that produced it, and a sentence of context (what you expected to happen). The AI is only as good as the clues you give it.
+
+> **Common Pitfall:** Treat GenAI fixes as suggestions, not gospel. Always re-run the corrected code in Jupyter and confirm the output is what you actually wanted. A snippet that runs without error can still compute the wrong thing (see Bug #8, where `.fillna(0)` runs cleanly but changes nothing).
+
+## Walkthrough and Exercise 3.1: Debug with GenAI
 
 ```{python}
 #| error: true
@@ -466,6 +518,16 @@ populations['double_size'] = populations['size'].apply(lambda x: x * 2, axis=1)
 populations['fertility_rate'].fillna(0)
 ```
 
+### Self-Check
+
+By the end of this module, you should be able to:
+
+- [ ] Read a Python traceback from the bottom up to find the most useful clue
+- [ ] Distinguish common error types: `AttributeError` (Bug #1), `KeyError` (Bugs #3, #6), and `SyntaxError` (Bug #4)
+- [ ] Write a GenAI debugging prompt that includes the code, the full error, and your intent
+- [ ] Verify a suggested fix by re-running it, including catching silent no-ops like `.fillna(0)` without reassignment (Bug #8)
+- [ ] Double-check column names and `=` vs. `==` before assuming the data is at fault
+
 ---
 
 # _Day 2: Visualize to Tell_
@@ -474,7 +536,7 @@ populations['fertility_rate'].fillna(0)
 
 # Module 4: Data Visualization Basics with Matplotlib and Seaborn
 
-## Walkthrough #5: Data Visualization Techniques
+## Walkthrough 4.1: Data Visualization Techniques
 
 ### Line plot with Matplotlib
 
@@ -528,7 +590,7 @@ populations['fertility_rate'].fillna(0)
 ### Adjusting axes and tick marks
 
 ```{python}
-# Bar chart of gdp_percapita for different Caribbean countries in 2020 with 
+# Bar chart of gdp_percapita for different Caribbean countries in 2020 with
 # adjusted axes and tick marks
 
 
@@ -581,7 +643,7 @@ populations['fertility_rate'].fillna(0)
 
 
 
-## Exercise #5: Data Visualization Techniques
+## Exercise 4.1: Data Visualization Techniques
 
 ### Line Plot with Matplotlib
 
@@ -632,7 +694,7 @@ asian_countries = ['CHN', 'IND', 'IDN', 'PAK', 'BGD']
 african_countries = ['NGA', 'ETH', 'EGY', 'ZAF', 'DZA']
 
 
-# Bar chart of fertility rate for selected African countries in 2020 with 
+# Bar chart of fertility rate for selected African countries in 2020 with
 # adjusted axes and tick marks
 
 
@@ -687,11 +749,27 @@ african_countries = ['NGA', 'ETH', 'EGY', 'ZAF', 'DZA']
 
 ```
 
+> **Common Pitfall:** Matplotlib draws onto the current figure, so forgetting `plt.figure()` before a new plot (or forgetting `plt.show()` after) can cause charts to overlap or render in unexpected places. Start each chart with a fresh `plt.figure()`.
+
+> **Common Pitfall:** A bar chart whose y-axis does not start at 0 visually exaggerates differences. When you set `plt.ylim(...)`, keep the lower bound at 0 for bar charts unless you have a deliberate reason not to.
+
+### Self-Check
+
+By the end of this module, you should be able to:
+
+- [ ] Create line and bar charts (vertical and horizontal) with Matplotlib
+- [ ] Add labels, a title, gridlines, and adjust axis limits and tick marks
+- [ ] Draw a histogram, boxplot, and violin plot with Seaborn
+- [ ] Explain what each chart type reveals about a distribution or comparison
+- [ ] Filter a DataFrame to the rows a chart needs before plotting
+
 ---
 
 # Module 5: Interactive Data Visualization with Plotly
 
-## Walkthrough #6: Interactive Charts and Dashboards with Plotly
+## Walkthrough 5.1: Interactive Charts and Dashboards with Plotly
+
+> **Common Pitfall:** If your Plotly charts show up blank in a Jupyter notebook, you likely skipped the `pyo.init_notebook_mode(connected=True)` step from the Kickoff. Run that offline-init cell once per session so the Plotly JavaScript is available.
 
 ### Basic interactive chart
 
@@ -753,7 +831,7 @@ african_countries = ['NGA', 'ETH', 'EGY', 'ZAF', 'DZA']
 ```
 
 
-## Exercise #6: Interactive Charts and Dashboards with Plotly
+## Exercise 5.1: Interactive Charts and Dashboards with Plotly
 
 ### Basic Interactive Chart
 
@@ -812,3 +890,14 @@ african_countries = ['NGA', 'ETH', 'EGY', 'ZAF', 'DZA']
 
 ```
 
+> **Common Pitfall:** When building subplots, every `fig.add_trace()` needs the correct `row=` and `col=` -- a trace added to the wrong panel (or with the index off by one) lands in an unexpected spot or overwrites another. Match each trace to its intended subplot title.
+
+### Self-Check
+
+By the end of this module, you should be able to:
+
+- [ ] Create an interactive line and scatter chart with Plotly Express (`px.line`, `px.scatter`)
+- [ ] Color points by a category and customize hover information
+- [ ] Refine interactivity with `fig.update_traces()` and `fig.update_layout()`
+- [ ] Combine multiple charts into a dashboard with `make_subplots()` and `fig.add_trace()`
+- [ ] Initialize Plotly for the notebook so charts render reliably

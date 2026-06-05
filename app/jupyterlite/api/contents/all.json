@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-06-05T17:11:01.538054Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-06-05T17:11:01.538054Z",
+      "mimetype": "text/csv",
+      "name": "economies.csv",
+      "path": "economies.csv",
+      "size": 44554,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-06-05T17:11:01.530416Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-06-05T17:11:01.530416Z",
+      "mimetype": null,
+      "name": "exercises.ipynb",
+      "path": "exercises.ipynb",
+      "size": 35722,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-06-05T17:11:01.533082Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-06-05T17:11:01.533082Z",
+      "mimetype": null,
+      "name": "exercises_solutions.ipynb",
+      "path": "exercises_solutions.ipynb",
+      "size": 47730,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-06-05T17:11:01.539099Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-06-05T17:11:01.539099Z",
+      "mimetype": "text/csv",
+      "name": "populations.csv",
+      "path": "populations.csv",
+      "size": 64402,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2026-06-05T17:11:08.452554Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-06-05T17:11:08.462572Z",
+  "mimetype": null,
+  "name": "",
+  "path": "",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
