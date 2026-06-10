@@ -807,7 +807,7 @@ afg_data = economies[economies['code'] == 'AFG']
 # Create an interactive line chart
 fig = px.line(afg_data, x='year', y='gdp_percapita',
               title='GDP Per Capita Over Years for Afghanistan (AFG)')
-fig.show()
+fig.show();
 ```
 
 ### Adding interactive elements
@@ -822,7 +822,7 @@ fig = px.scatter(economies, x='gdp_percapita', y='gross_savings', color='income_
 fig.update_traces(marker=dict(size=10), selector=dict(mode='markers'));
 fig.update_layout(hovermode='closest');
 
-fig.show()
+fig.show();
 ```
 
 ### Designing a simple dashboard
@@ -850,7 +850,7 @@ fig.add_trace(bar_chart, row=1, col=2);
 fig.update_layout(title_text='Simple Dashboard with Multiple Charts',
                   showlegend=False, width=830, height=500);
 
-fig.show()
+fig.show();
 ```
 
 
@@ -865,7 +865,7 @@ bra_data = populations[populations['country_code'] == 'BRA']
 # Create an interactive line chart (Fertility Rate Over Years)
 fig = px.line(bra_data, x='year', y='fertility_rate',
               title='Fertility Rate Over Years for Brazil (BRA)')
-fig.show()
+fig.show();
 ```
 
 ### Adding Interactive Elements
@@ -883,7 +883,7 @@ fig = px.scatter(
 fig.update_traces(marker=dict(size=10), selector=dict(mode='markers'));
 fig.update_layout(hovermode='closest');
 
-fig.show()
+fig.show();
 ```
 
 ### Designing a Simple Dashboard
@@ -913,7 +913,7 @@ fig.add_trace(bar_chart, row=1, col=2);
 # Update layout to add a title and hide the legend
 fig.update_layout(title_text='Simple Dashboard with Multiple Charts',
                   showlegend=False);
-fig.show()
+fig.show();
 ```
 
 > **Common Pitfall:** When building subplots, every `fig.add_trace()` needs the correct `row=` and `col=` -- a trace added to the wrong panel (or with the index off by one) lands in an unexpected spot or overwrites another. Match each trace to its intended subplot title.
