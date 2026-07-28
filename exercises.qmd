@@ -14,12 +14,12 @@ execute:
 
 ```{python}
 #| eval: false
-!pip install pandas matplotlib seaborn plotly
+!pip install pandas matplotlib seaborn plotly nbformat
 ```
 
 ```{python}
 # Colab setup: download the course data files into this runtime so the
-# read_csv / read_excel calls below work. Runs only on Google Colab; it is a
+# read_csv calls below work. Runs only on Google Colab; it is a
 # no-op locally or in JupyterLite, where the data files are already present.
 import os, sys, urllib.request
 
@@ -37,10 +37,6 @@ import pandas as pd
 
 # Display all columns
 pd.set_option('display.max_columns', None)
-
-# Display all outputs from each cell
-from IPython.core.interactiveshell import InteractiveShell
-InteractiveShell.ast_node_interactivity = "all"
 ```
 # Data Analytics Kickoff + Course Goals
 
@@ -58,6 +54,24 @@ from plotly.subplots import make_subplots
 ```
 
 ```{python}
+#| output: false
+#| echo: false
+import plotly.offline as pyo
+
+try:
+    shell = get_ipython().__class__.__name__
+    if shell == 'ZMQInteractiveShell':
+        # Running in a Jupyter notebook
+        pyo.init_notebook_mode(connected=True)
+except NameError:
+    # Not in IPython at all (e.g., knitr/reticulate)
+    pass
+```
+
+
+```{python}
+#| output: false
+#| eval: false
 # For plotly to load directly in Jupyter notebook
 import plotly.offline as pyo
 pyo.init_notebook_mode(connected=True)
@@ -456,9 +470,10 @@ By the end of this module, you should be able to:
 
 # Module 3: Exploring and Learning from Mistakes
 
-Use the provided prompt (`prompt.md` on GitHub) as your initial guide. Here are 8 Python errors that
-you'll attempt to use LLMs to help you debug. Make sure to run the code in
-Jupyter first and then try to debug!
+Use the provided prompt (`prompt.md` on GitHub) as your initial guide. Here are 8 Python bugs that
+you'll attempt to use LLMs to help you debug. The first 7 raise errors; the
+last one runs without an error but silently does nothing. Make sure to run
+the code in Jupyter first and then try to debug!
 
 > **Common Pitfall:** Pasting just "it broke" or a one-line error into ChatGPT rarely helps. Include the full traceback, the code that produced it, and a sentence of context (what you expected to happen). The AI is only as good as the clues you give it.
 

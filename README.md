@@ -56,6 +56,10 @@ The major files in this repository are
   ```bash
   pip install pandas matplotlib seaborn plotly
   ```
+- **Or install from the repo's requirements file** (equivalent, if you cloned/downloaded this repo):
+  ```bash
+  pip install -r requirements.txt
+  ```
 
 ### Step 4: Verify Installation
 - **Create a new notebook**: In the Jupyter Notebook interface, click on "New" and select "Python 3" to open a new notebook.

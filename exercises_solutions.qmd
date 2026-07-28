@@ -15,12 +15,12 @@ execute:
 
 ```{python}
 #| eval: false
-!pip install pandas matplotlib seaborn plotly
+!pip install pandas matplotlib seaborn plotly nbformat
 ```
 
 ```{python}
 # Colab setup: download the course data files into this runtime so the
-# read_csv / read_excel calls below work. Runs only on Google Colab; it is a
+# read_csv calls below work. Runs only on Google Colab; it is a
 # no-op locally or in JupyterLite, where the data files are already present.
 import os, sys, urllib.request
 
@@ -38,10 +38,6 @@ import pandas as pd
 
 # Display all columns
 pd.set_option('display.max_columns', None)
-
-# Display all outputs from each cell
-from IPython.core.interactiveshell import InteractiveShell
-InteractiveShell.ast_node_interactivity = "all"
 ```
 
 # Data Analytics Kickoff + Course Goals
@@ -217,13 +213,19 @@ economies[(economies['inflation_rate'] < 0) & (economies['income_group'] == 'Low
 ```{python}
 # Load the populations data from a CSV file
 populations = pd.read_csv("populations.csv")
+```
 
+```{python}
 # Examine the first few rows
 populations.head()
+```
 
+```{python}
 # Display the information about the DataFrame
 populations.info()
+```
 
+```{python}
 # Display summary statistics of the DataFrame
 populations.describe()
 ```
@@ -238,7 +240,7 @@ populations.dropna(how='any')
 ```
 
 ```{python}
-# Remove rows with missing values in specific columns
+# Remove rows with missing values in fertility_rate and life_expectancy
 populations.dropna(subset=['fertility_rate', 'life_expectancy'])
 ```
 
@@ -451,8 +453,10 @@ By the end of this module, you should be able to:
 # Module 3: Exploring and Learning from Mistakes
 
 Use the provided prompt (in `prompt.md` on GitHub) as your initial guide.
-Here are 8 Python errors that you'll attempt to use LLMs to help you debug.
-Make sure to run the code in Jupyter first and then try to debug!
+Here are 8 Python bugs that you'll attempt to use LLMs to help you debug.
+The first 7 raise errors; the last one runs without an error but silently
+does nothing. Make sure to run the code in Jupyter first and then try to
+debug!
 
 > **Common Pitfall:** Pasting just "it broke" or a one-line error into ChatGPT rarely helps. Include the full traceback, the code that produced it, and a sentence of context (what you expected to happen). The AI is only as good as the clues you give it.
 
@@ -555,6 +559,7 @@ afg_data = economies[economies['code'] == 'AFG']
 plt.figure(figsize=(10, 3));
 plt.plot(afg_data['year'], afg_data['gdp_percapita'],
          marker='o', linestyle='-', color='b');
+plt.tight_layout()
 plt.show();
 ```
 
@@ -626,6 +631,7 @@ plt.show();
 ### Histogram with Seaborn
 
 ```{python}
+# Histogram of gdp_percapita
 plt.figure(figsize=(10, 3))
 sns.histplot(economies['gdp_percapita'], bins=30, kde=True)
 plt.xlabel('GDP Per Capita')
@@ -636,6 +642,7 @@ plt.show();
 ### Boxplot with Seaborn
 
 ```{python}
+# Boxplot of gdp_percapita by income_group
 plt.figure(figsize=(10, 3))
 sns.boxplot(x='gdp_percapita', y='income_group', data=economies)
 plt.xlabel('GDP Per Capita')
@@ -648,6 +655,7 @@ plt.show();
 ### Violin plot with Seaborn
 
 ```{python}
+# Violin plot of gdp_percapita by income_group
 plt.figure(figsize=(10, 3))
 sns.violinplot(x='gdp_percapita', y='income_group', data=economies)
 plt.xlabel('GDP Per Capita')
