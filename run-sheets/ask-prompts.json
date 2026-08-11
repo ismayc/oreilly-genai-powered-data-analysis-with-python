@@ -71,7 +71,9 @@
     "Any question you did not get to ask? Drop it in chat now. I will answer it or bring it back tomorrow morning."
   ]},
   {"h2": "W&E #5 · Static visualization", "ask": [
-    "Warm-up while we get set: what chart type do you reach for most at work? Type bar, line, pie, scatter, or other in chat."
+    "Did anyone try the take-home? Type in chat: one summary or question the AI suggested for the data. If you skipped it, no problem.",
+    "Warm-up while we get set: what chart type do you reach for most at work? Type bar, line, pie, scatter, or other in chat.",
+    "Yesterday most questions came in the first two hours. Challenge for today: get at least one question or guess into chat every hour. I read everything."
   ]},
   {"cell": "# Filter data for a specific country", "nth": 1, "ask": [
     "Which country should we look at next? Type a country in chat and I will run one live."
