@@ -1,0 +1,110 @@
+[
+  {"h2": "Opening & kickoff framing", "ask": [
+    "While people settle in, type in chat: where are you joining from, and what is one thing you want GenAI to help you do with data?",
+    "Quick poll in chat: rate your pandas comfort from 1 to 5. No wrong answers, this just helps me pace things."
+  ]},
+  {"h2": "W&E #1 · Environment + first prompt", "ask": [
+    "Type in chat: which AI assistant do you have open right now? ChatGPT, Claude, Gemini, Copilot, or something else.",
+    "Type yes or no in chat: have you already used GenAI to write code at work?"
+  ]},
+  {"cell": "# For plotly to load directly in Jupyter notebook", "ask": [
+    "Type ok in chat if your imports all ran clean. If you hit an error, paste it in chat and we will debug it together in a minute."
+  ]},
+  {"h2": "Module 1 framing", "ask": [
+    "One line in chat: what is the messiest dataset you have ever had to clean? What made it messy?"
+  ]},
+  {"cell": "# Load the data from a CSV file", "when": "before", "ask": [
+    "Before I run this: what do you think happens if the file path is wrong? Type the error name you would expect in chat."
+  ]},
+  {"cell": "# Display the first few rows of the DataFrame", "ask": [
+    "Look at these columns. Which one do you predict has missing values? Type its name in chat."
+  ]},
+  {"cell": "# Display the information about the DataFrame", "when": "before", "ask": [
+    "Prediction time: is year stored as a number or as text here? Type number or text in chat."
+  ]},
+  {"cell": "# Display summary statistics of the DataFrame", "ask": [
+    "Which row of describe would you check first to spot a data problem? Type min, max, mean, or count, and why in a few words."
+  ]},
+  {"cell": "# Remove rows with any missing values", "when": "before", "ask": [
+    "Quick poll: at work, do you usually drop missing rows or fill them in? Type drop or fill in chat."
+  ]},
+  {"cell": "# Replace missing values with a specific value", "ask": [
+    "What is the risk of filling numeric gaps with 0? Type one word in chat.",
+    "Bonus: ask your AI assistant that same question and see if it flags anything you did not."
+  ]},
+  {"cell": "# Change year to be a string instead of an integer", "ask": [
+    "Why could a year stored as text bite you later? Type one operation in chat that would break or behave strangely."
+  ]},
+  {"cell": "# Filter rows where inflation_rate is less than 0 and income_group is", "when": "before", "ask": [
+    "How do you combine two filter conditions in pandas? Type the symbol in chat. Careful, it is not the word and."
+  ]},
+  {"h2": "Module 2 framing", "ask": [
+    "One line in chat: what summary does your boss ask for most often? Averages, counts, totals, or something else?"
+  ]},
+  {"cell": "# Get the mean gdp per capita for each income_group", "when": "before", "ask": [
+    "Prediction: which income group will have the highest average GDP per capita? Type your guess in chat before I run it."
+  ]},
+  {"cell": "# Calculate the median gdp_percapita and inflation_rate for each incom", "when": "before", "ask": [
+    "Why might the median beat the mean for GDP per capita? Type one word in chat."
+  ]},
+  {"cell": "# Create a pivot table of gdp_percapita and inflation_rate by income_g", "when": "before", "ask": [
+    "Quick poll: where do you build pivot tables today? Type excel, sql, pandas, or never."
+  ]},
+  {"cell": "# Count the occurrences of each income_group", "when": "before", "ask": [
+    "Guess: which income group shows up most often in this data? Type it in chat."
+  ]},
+  {"h2": "Module 3 framing", "ask": [
+    "Type in chat: what was the last error message that really stumped you? A few words is fine.",
+    "When you paste an error into ChatGPT, what do you include? Just the error, the code too, or more? Type it in chat."
+  ]},
+  {"cell": "### 1", "when": "before", "ask": [
+    "Spot the bug before the AI does: what is wrong with this line? Type your diagnosis in chat."
+  ]},
+  {"cell": "### 2", "when": "before", "ask": [
+    "This one is sneakier. What will go wrong here? Type your guess in chat before we ask the AI."
+  ]},
+  {"cell": "### 3", "when": "before", "ask": [
+    "One more: what will Python complain about here? Type the error type in chat if you know it."
+  ]},
+  {"h2": "Day 1 wrap", "ask": [
+    "Type in chat: one thing from today you will try at work this week.",
+    "Any question you did not get to ask? Drop it in chat now. I will answer it or bring it back tomorrow morning."
+  ]},
+  {"h2": "W&E #5 · Static visualization", "ask": [
+    "Warm-up while we get set: what chart type do you reach for most at work? Type bar, line, pie, scatter, or other in chat."
+  ]},
+  {"cell": "# Filter data for a specific country", "nth": 1, "ask": [
+    "Which country should we look at next? Type a country in chat and I will run one live."
+  ]},
+  {"cell": "# Bar chart of gdp_percapita for different Caribbean countries in 2020", "when": "before", "ask": [
+    "Design call: these country names are long. Vertical or horizontal bars? Type v or h in chat."
+  ]},
+  {"cell": "# Histogram of gdp_percapita", "when": "before", "ask": [
+    "Prediction: will GDP per capita be skewed right, skewed left, or roughly symmetric? Type your guess in chat."
+  ]},
+  {"cell": "# Boxplot of gdp_percapita by income_group", "ask": [
+    "What does a dot outside the whiskers mean? Type it in chat."
+  ]},
+  {"cell": "# Violin plot of gdp_percapita by income_group", "ask": [
+    "Quick poll: which would you put in front of an executive, the boxplot or the violin? Type b or v, plus three words on why."
+  ]},
+  {"h2": "Module 5 framing", "ask": [
+    "One line in chat: tell me about a time an interactive chart actually helped you or your audience. If never, type never and that is useful too."
+  ]},
+  {"cell": "# Create an interactive scatter plot", "ask": [
+    "Hover over a few points on your side. Type in chat one thing this tells you that the static scatter could not."
+  ]},
+  {"cell": "# Filter data for the year 2020", "ask": [
+    "If you could add a third panel to this dashboard, what would it show? Type it in chat."
+  ]},
+  {"h2": "Storytelling framing", "ask": [
+    "Think of the last chart you shared at work. Type its headline message in one sentence in chat. A message, not a title."
+  ]},
+  {"h2": "W&E #7 · Storytelling", "ask": [
+    "Which chart from today would you lead with for a CFO, and why? Type your pick in chat."
+  ]},
+  {"h2": "How GenAI works & close", "ask": [
+    "Type in chat: what surprised you most about how these models actually work?",
+    "Last call: what is one question about GenAI you still want answered before we close?"
+  ]}
+]
