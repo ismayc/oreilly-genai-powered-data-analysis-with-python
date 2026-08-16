@@ -2,84 +2,84 @@
   {
     "objectID": "solutions.html",
     "href": "solutions.html",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "",
-    "text": "NoteAbout this page\n\n\n\n\n\nThese are the completed solutions, runnable in your browser — no install needed. Click Run Code on any cell (run the import and data-loading cells near the top first). Edit any cell to experiment.\nLooking for the blanks to fill in yourself? See the exercises page."
+    "text": "NoteAbout this page\n\n\n\n\n\nThese are the completed solutions, runnable in your browser, no install needed. Click Run Code on any cell (run the import and data-loading cells near the top first). Edit any cell to experiment.\nLooking for the blanks to fill in yourself? See the exercises page."
   },
   {
     "objectID": "solutions.html#walkthrough-setting-up-the-python-environment",
     "href": "solutions.html#walkthrough-setting-up-the-python-environment",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough: Setting Up the Python Environment",
     "text": "Walkthrough: Setting Up the Python Environment\nIf you haven’t already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so here."
   },
   {
     "objectID": "solutions.html#exercise-setting-up-the-python-environment",
     "href": "solutions.html#exercise-setting-up-the-python-environment",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Exercise: Setting Up the Python Environment",
     "text": "Exercise: Setting Up the Python Environment\nFollow the instructions above in Walkthrough to check for correct installation of necessary packages. We’ll wait a few minutes to make sure as many of you are set up as possible. Please give a thumbs up in the pulse check if you are ready to move on.\nWe’ll work with ChatGPT as our GenAI tool. If you are getting errors at this point and would like to ask it for assistance, go for it! We’ll make more use of it throughout the course, and I’ll give tips along the way too."
   },
   {
     "objectID": "solutions.html#walkthrough-1.1-cleaning-and-preparing-data-with-pandas",
     "href": "solutions.html#walkthrough-1.1-cleaning-and-preparing-data-with-pandas",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough 1.1: Cleaning and Preparing Data with Pandas",
     "text": "Walkthrough 1.1: Cleaning and Preparing Data with Pandas\n\nImport data from a CSV or from an Excel file\n\n\n\n\n\n\n\n\nPerform an initial exploration of the data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHandle missing data\n\nRemove rows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReplace missing values with specific value\n\n\n\n\n\n\nThis can be extended to replace missing values with the mean, median, or mode of the column too.\n\n\n\nConvert a column to a different data type\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRename a column\n\n\n\n\n\n\n\n\nFiltering rows based on conditions\n\nConditions on a single column\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConditions on multiple columns"
   },
   {
     "objectID": "solutions.html#exercise-1.1-cleaning-and-preparing-data-with-pandas",
     "href": "solutions.html#exercise-1.1-cleaning-and-preparing-data-with-pandas",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Exercise 1.1: Cleaning and Preparing Data with Pandas",
     "text": "Exercise 1.1: Cleaning and Preparing Data with Pandas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHandle Missing Data\n\nRemove rows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReplace missing values with specific value\n\n\n\n\n\n\n\n\n\nConvert a Column to a Different Data Type and Rename a Column\n\nConvert a Column to a Different Data Type\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRename a Column\n\n\n\n\n\n\n\n\nFilter a DataFrame\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCommon Pitfall: Methods like .dropna() and .fillna() return a new DataFrame and leave the original untouched unless you assign the result back (e.g., populations = populations.dropna()). If your “cleaning” seems to have no effect, check whether you forgot to capture the return value.\n\n\nCommon Pitfall: Filling missing numbers with 0 quietly changes your data’s meaning – a country with a missing GDP is not a country with a GDP of zero. Decide whether dropping, zero-filling, or mean/median-filling is honest for your analysis before you reach for .fillna(0).\n\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nLoad a CSV into a pandas DataFrame and inspect it with .head(), .info(), and .describe()\nHandle missing values by dropping rows (.dropna()) or filling them (.fillna()), and explain the tradeoff\nConvert a column between data types with .astype() and rename columns with .rename()\nFilter rows on a single condition and on multiple conditions combined with & / |\nRecognize when a pandas operation returns a new object versus modifying in place"
   },
   {
     "objectID": "solutions.html#walkthrough-2.1-summarizing-data-with-pandas",
     "href": "solutions.html#walkthrough-2.1-summarizing-data-with-pandas",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough 2.1: Summarizing Data with Pandas",
     "text": "Walkthrough 2.1: Summarizing Data with Pandas\n\nGrouping data\n\n\n\n\n\n\n\n\nApplying Functions\n\nApplying a function element-wise with map()\n\n\n\n\n\n\n\n\nApplying a Function to Groups with groupby() and agg()\n\n\n\n\n\n\n\n\n\nSummary tables\n\n\n\n\n\n\n\n\nAnalyzing categorical data\n\nUsing cross-tabulation\n\n\n\n\n\n\n\n\nBy getting group counts"
   },
   {
     "objectID": "solutions.html#exercise-2.1-summarizing-data-with-pandas",
     "href": "solutions.html#exercise-2.1-summarizing-data-with-pandas",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Exercise 2.1: Summarizing Data with Pandas",
     "text": "Exercise 2.1: Summarizing Data with Pandas\n\nGrouping Data\n\n\n\n\n\n\n\n\nApplying Functions\n\nApplying a function element-wise with map()\n\n\n\n\n\n\n\n\nApplying a function to groups with groupby() and agg()\n\n\n\n\n\n\n\n\n\nSummary Tables\n\n\n\n\n\n\n\n\nAnalyzing Categorical Data\n\nUsing Cross-Tabulation\n\n\n\n\n\n\n\n\nBy Getting Group Counts\n\n\n\n\n\n\n\nCommon Pitfall: When you call .agg() or .groupby(...).agg(), make sure you are grouping on the key you actually mean (e.g., continent vs. region). Grouping on the wrong column gives you a perfectly valid-looking table that answers the wrong question.\n\n\nCommon Pitfall: pd.pivot_table() silently averages with aggfunc='mean' by default. If your summary numbers look surprising, confirm which aggregation function is being applied – a “mean of counts” is rarely what you want.\n\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nGroup rows with .groupby() and compute a summary statistic per group\nApply a function element-wise to a column with .map()\nUse .agg() to apply different aggregations to different columns\nBuild a summary grid with pd.pivot_table() and choose its index, columns, and aggfunc\nCount categories with pd.crosstab() and .value_counts()"
   },
   {
     "objectID": "solutions.html#walkthrough-and-exercise-3.1-debug-with-genai",
     "href": "solutions.html#walkthrough-and-exercise-3.1-debug-with-genai",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough and Exercise 3.1: Debug with GenAI",
     "text": "Walkthrough and Exercise 3.1: Debug with GenAI\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nRead a Python traceback from the bottom up to find the most useful clue\nDistinguish common error types: AttributeError (Bug #1), KeyError (Bugs #3, #6), and SyntaxError (Bug #4)\nWrite a GenAI debugging prompt that includes the code, the full error, and your intent\nVerify a suggested fix by re-running it, including catching silent no-ops like .fillna(0) without reassignment (Bug #8)\nDouble-check column names and = vs. == before assuming the data is at fault"
   },
   {
     "objectID": "solutions.html#walkthrough-4.1-data-visualization-techniques",
     "href": "solutions.html#walkthrough-4.1-data-visualization-techniques",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough 4.1: Data Visualization Techniques",
     "text": "Walkthrough 4.1: Data Visualization Techniques\n\nLine plot with Matplotlib\n\n\n\n\n\n\n\n\nBar chart with Matplotlib\n\n\n\n\n\n\n\n\nAdding labels and titles\n\n\n\n\n\n\n\n\nAdjusting axes and tick marks\n\n\n\n\n\n\n\n\nHistogram with Seaborn\n\n\n\n\n\n\n\n\nBoxplot with Seaborn\n\n\n\n\n\n\n\n\nViolin plot with Seaborn"
   },
   {
     "objectID": "solutions.html#exercise-4.1-data-visualization-techniques",
     "href": "solutions.html#exercise-4.1-data-visualization-techniques",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Exercise 4.1: Data Visualization Techniques",
     "text": "Exercise 4.1: Data Visualization Techniques\n\nLine Plot with Matplotlib\n\n\n\n\n\n\n\n\nBar Chart with Matplotlib\n\n\n\n\n\n\n\n\nAdding Labels and Titles\n\n\n\n\n\n\n\n\nAdjusting Axes and Tick Marks\n\n\n\n\n\n\n\n\nHistogram with Seaborn\n\n\n\n\n\n\n\n\nBoxplot with Seaborn\n\n\n\n\n\n\n\n\nViolin Plot with Seaborn\n\n\n\n\n\n\n\nCommon Pitfall: Matplotlib draws onto the current figure, so forgetting plt.figure() before a new plot (or forgetting plt.show() after) can cause charts to overlap or render in unexpected places. Start each chart with a fresh plt.figure().\n\n\nCommon Pitfall: A bar chart whose y-axis does not start at 0 visually exaggerates differences. When you set plt.ylim(...), keep the lower bound at 0 for bar charts unless you have a deliberate reason not to.\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nCreate line and bar charts (vertical and horizontal) with Matplotlib\nAdd labels, a title, gridlines, and adjust axis limits and tick marks\nDraw a histogram, boxplot, and violin plot with Seaborn\nExplain what each chart type reveals about a distribution or comparison\nFilter a DataFrame to the rows a chart needs before plotting"
   },
   {
     "objectID": "solutions.html#walkthrough-5.1-interactive-charts-and-dashboards-with-plotly",
     "href": "solutions.html#walkthrough-5.1-interactive-charts-and-dashboards-with-plotly",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough 5.1: Interactive Charts and Dashboards with Plotly",
     "text": "Walkthrough 5.1: Interactive Charts and Dashboards with Plotly\n\nCommon Pitfall: If your Plotly charts show up blank in a Jupyter notebook, you likely skipped the pyo.init_notebook_mode(connected=True) step from the Kickoff. Run that offline-init cell once per session so the Plotly JavaScript is available.\n\n\nBasic interactive chart\n\n\n\n\n\n\n\n\nAdding interactive elements\n\n\n\n\n\n\n\n\nDesigning a simple dashboard"
   },
   {
     "objectID": "solutions.html#exercise-5.1-interactive-charts-and-dashboards-with-plotly",
     "href": "solutions.html#exercise-5.1-interactive-charts-and-dashboards-with-plotly",
-    "title": "Solutions — GenAI-Powered Data Analysis with Python",
+    "title": "Solutions: GenAI-Powered Data Analysis with Python",
     "section": "Exercise 5.1: Interactive Charts and Dashboards with Plotly",
     "text": "Exercise 5.1: Interactive Charts and Dashboards with Plotly\n\nBasic Interactive Chart\n\n\n\n\n\n\n\n\nAdding Interactive Elements\n\n\n\n\n\n\n\n\nDesigning a Simple Dashboard\n\n\n\n\n\n\n\nCommon Pitfall: When building subplots, every fig.add_trace() needs the correct row= and col= – a trace added to the wrong panel (or with the index off by one) lands in an unexpected spot or overwrites another. Match each trace to its intended subplot title.\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nCreate an interactive line and scatter chart with Plotly Express (px.line, px.scatter)\nColor points by a category and customize hover information\nRefine interactivity with fig.update_traces() and fig.update_layout()\nCombine multiple charts into a dashboard with make_subplots() and fig.add_trace()\nInitialize Plotly for the notebook so charts render reliably"
   },
@@ -88,7 +88,7 @@
     "href": "index.html",
     "title": "GenAI-Powered Data Analysis with Python",
     "section": "",
-    "text": "Welcome! This site lets you run all of the course code directly in your browser. Python runs locally on your own machine via Pyodide (WebAssembly) — there is nothing to install, no account to create, and no cloud server involved."
+    "text": "Welcome! This site lets you run all of the course code directly in your browser. Python runs locally on your own machine via Pyodide (WebAssembly). There is nothing to install, no account to create, and no cloud server involved."
   },
   {
     "objectID": "index.html#two-ways-to-work",
@@ -102,89 +102,89 @@
     "href": "index.html#how-it-works",
     "title": "GenAI-Powered Data Analysis with Python",
     "section": "How it works",
-    "text": "How it works\n\nClick Run Code on any code cell to execute it in your browser.\nRun the import cell and the data-loading cells near the top of a page first, then work top to bottom — later cells reuse variables from earlier ones.\nThe first cell you run takes a few seconds while Python and the data packages load. After that it’s fast.\nThe two datasets — economies.csv and populations.csv — are bundled with the page, so pd.read_csv(...) just works.\n\n\n\n\n\n\n\nNoteNeed the originals?\n\n\n\nThe Jupyter notebooks, slides, and data are all in the course GitHub repository. You can also run the notebooks on Google Colab if you prefer a full Jupyter environment.\n\n\n\n\n\n\n\n\nTipBrowser support\n\n\n\nThe in-browser plots need a modern browser (Chrome, Edge, Firefox, or Safari, kept up to date). If a plot cell shows an OffscreenCanvas error, update your browser to the latest version."
+    "text": "How it works\n\nClick Run Code on any code cell to execute it in your browser.\nRun the import cell and the data-loading cells near the top of a page first, then work top to bottom. Later cells reuse variables from earlier ones.\nThe first cell you run takes a few seconds while Python and the data packages load. After that it’s fast.\nThe two datasets (economies.csv and populations.csv) are bundled with the page, so pd.read_csv(...) just works.\n\n\n\n\n\n\n\nNoteNeed the originals?\n\n\n\nThe Jupyter notebooks, slides, and data are all in the course GitHub repository. You can also run the notebooks on Google Colab if you prefer a full Jupyter environment.\n\n\n\n\n\n\n\n\nTipBrowser support\n\n\n\nThe in-browser plots need a modern browser (Chrome, Edge, Firefox, or Safari, kept up to date). If a plot cell shows an OffscreenCanvas error, update your browser to the latest version."
   },
   {
     "objectID": "exercises.html",
     "href": "exercises.html",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "",
-    "text": "TipHow to use this page\n\n\n\n\n\nEverything runs in your browser — there’s no Python or Jupyter to install.\n\nClick Run Code on the import cell and the data-loading cells near the top first.\nThen work through the page top to bottom, filling in each cell as we live-code together.\nYour edits are saved automatically in this browser. Use Start Over on a cell to reset it.\nThe very first run takes a few seconds while Python loads in the background.\n\nStuck? Open the completed solutions in another tab."
+    "text": "TipHow to use this page\n\n\n\n\n\nEverything runs in your browser: there’s no Python or Jupyter to install.\n\nClick Run Code on the import cell and the data-loading cells near the top first.\nThen work through the page top to bottom, filling in each cell as we live-code together.\nYour edits are saved automatically in this browser. Use Start Over on a cell to reset it.\nThe very first run takes a few seconds while Python loads in the background.\n\nStuck? Open the completed solutions in another tab."
   },
   {
     "objectID": "exercises.html#walkthrough-setting-up-the-python-environment",
     "href": "exercises.html#walkthrough-setting-up-the-python-environment",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough: Setting Up the Python Environment",
     "text": "Walkthrough: Setting Up the Python Environment\nIf you haven’t already installed Python, Jupyter, and the necessary packages, there are instructions on the course repo in the README to do so here."
   },
   {
     "objectID": "exercises.html#exercise-setting-up-the-python-environment",
     "href": "exercises.html#exercise-setting-up-the-python-environment",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Exercise: Setting Up the Python Environment",
     "text": "Exercise: Setting Up the Python Environment\nFollow the instructions above in Walkthrough to check for correct installation of necessary packages. We’ll wait a few minutes to make sure as many of you are set up as possible. Please give a thumbs up in the pulse check if you are ready to move on.\nWe’ll work with ChatGPT as our GenAI tool. If you are getting errors at this point and would like to ask it for assistance, go for it! We’ll make more use of it throughout the course, and I’ll give tips along the way too."
   },
   {
     "objectID": "exercises.html#walkthrough-1.1-cleaning-and-preparing-data-with-pandas",
     "href": "exercises.html#walkthrough-1.1-cleaning-and-preparing-data-with-pandas",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough 1.1: Cleaning and Preparing Data with Pandas",
     "text": "Walkthrough 1.1: Cleaning and Preparing Data with Pandas\n\nImport data from a CSV or from an Excel file\n\n\n\n\n\n\n\n\nPerform an initial exploration of the data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHandle missing data\n\nRemove rows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReplace missing values with specific value\n\n\n\n\n\n\n\n\n\nConvert a column to a different data type\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRename a column\n\n\n\n\n\n\n\n\nFiltering rows based on conditions\n\nConditions on a single column\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConditions on multiple columns"
   },
   {
     "objectID": "exercises.html#exercise-1.1-cleaning-and-preparing-data-with-pandas",
     "href": "exercises.html#exercise-1.1-cleaning-and-preparing-data-with-pandas",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Exercise 1.1: Cleaning and Preparing Data with Pandas",
     "text": "Exercise 1.1: Cleaning and Preparing Data with Pandas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHandle Missing Data\n\nRemove rows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReplace missing values with specific value\n\n\n\n\n\n\n\n\n\nConvert a Column to a Different Data Type and Rename a Column\n\nConvert a Column to a Different Data Type\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRename a Column\n\n\n\n\n\n\n\n\nFilter a DataFrame\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCommon Pitfall: Methods like .dropna() and .fillna() return a new DataFrame and leave the original untouched unless you assign the result back (e.g., populations = populations.dropna()). If your “cleaning” seems to have no effect, check whether you forgot to capture the return value.\n\n\nCommon Pitfall: Filling missing numbers with 0 quietly changes your data’s meaning – a country with a missing GDP is not a country with a GDP of zero. Decide whether dropping, zero-filling, or mean/median-filling is honest for your analysis before you reach for .fillna(0).\n\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nLoad a CSV into a pandas DataFrame and inspect it with .head(), .info(), and .describe()\nHandle missing values by dropping rows (.dropna()) or filling them (.fillna()), and explain the tradeoff\nConvert a column between data types with .astype() and rename columns with .rename()\nFilter rows on a single condition and on multiple conditions combined with & / |\nRecognize when a pandas operation returns a new object versus modifying in place"
   },
   {
     "objectID": "exercises.html#walkthrough-2.1-summarizing-data-with-pandas",
     "href": "exercises.html#walkthrough-2.1-summarizing-data-with-pandas",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough 2.1: Summarizing Data with Pandas",
     "text": "Walkthrough 2.1: Summarizing Data with Pandas\n\nGrouping data\n\n\n\n\n\n\n\n\nApplying Functions\n\nApplying a function element-wise with map()\n\n\n\n\n\n\n\n\nApplying a Function to Groups with groupby() and agg()\n\n\n\n\n\n\n\n\n\nSummary tables\n\n\n\n\n\n\n\n\nAnalyzing categorical data\n\nUsing cross-tabulation\n\n\n\n\n\n\n\n\nBy getting group counts"
   },
   {
     "objectID": "exercises.html#exercise-2.1-summarizing-data-with-pandas",
     "href": "exercises.html#exercise-2.1-summarizing-data-with-pandas",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Exercise 2.1: Summarizing Data with Pandas",
     "text": "Exercise 2.1: Summarizing Data with Pandas\n\nGrouping Data\n\n\n\n\n\n\n\n\nApplying Functions\n\nApplying a function element-wise with map()\n\n\n\n\n\n\n\n\nApplying a function to groups with groupby() and agg()\n\n\n\n\n\n\n\n\n\nSummary Tables\n\n\n\n\n\n\n\n\nAnalyzing Categorical Data\n\nUsing Cross-Tabulation\n\n\n\n\n\n\n\n\nBy Getting Group Counts\n\n\n\n\n\n\n\nCommon Pitfall: When you call .agg() or .groupby(...).agg(), make sure you are grouping on the key you actually mean (e.g., continent vs. region). Grouping on the wrong column gives you a perfectly valid-looking table that answers the wrong question.\n\n\nCommon Pitfall: pd.pivot_table() silently averages with aggfunc='mean' by default. If your summary numbers look surprising, confirm which aggregation function is being applied – a “mean of counts” is rarely what you want.\n\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nGroup rows with .groupby() and compute a summary statistic per group\nApply a function element-wise to a column with .map()\nUse .agg() to apply different aggregations to different columns\nBuild a summary grid with pd.pivot_table() and choose its index, columns, and aggfunc\nCount categories with pd.crosstab() and .value_counts()"
   },
   {
     "objectID": "exercises.html#walkthrough-and-exercise-3.1-debug-with-genai",
     "href": "exercises.html#walkthrough-and-exercise-3.1-debug-with-genai",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough and Exercise 3.1: Debug with GenAI",
     "text": "Walkthrough and Exercise 3.1: Debug with GenAI\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nRead a Python traceback from the bottom up to find the most useful clue\nDistinguish common error types: AttributeError (Bug #1), KeyError (Bugs #3, #6), and SyntaxError (Bug #4)\nWrite a GenAI debugging prompt that includes the code, the full error, and your intent\nVerify a suggested fix by re-running it, including catching silent no-ops like .fillna(0) without reassignment (Bug #8)\nDouble-check column names and = vs. == before assuming the data is at fault"
   },
   {
     "objectID": "exercises.html#walkthrough-4.1-data-visualization-techniques",
     "href": "exercises.html#walkthrough-4.1-data-visualization-techniques",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough 4.1: Data Visualization Techniques",
     "text": "Walkthrough 4.1: Data Visualization Techniques\n\nLine plot with Matplotlib\n\n\n\n\n\n\n\n\nBar chart with Matplotlib\n\n\n\n\n\n\n\n\nAdding labels and titles\n\n\n\n\n\n\n\n\nAdjusting axes and tick marks\n\n\n\n\n\n\n\n\nHistogram with Seaborn\n\n\n\n\n\n\n\n\nBoxplot with Seaborn\n\n\n\n\n\n\n\n\nViolin plot with Seaborn"
   },
   {
     "objectID": "exercises.html#exercise-4.1-data-visualization-techniques",
     "href": "exercises.html#exercise-4.1-data-visualization-techniques",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Exercise 4.1: Data Visualization Techniques",
     "text": "Exercise 4.1: Data Visualization Techniques\n\nLine Plot with Matplotlib\n\n\n\n\n\n\n\n\nBar Chart with Matplotlib\n\n\n\n\n\n\n\n\nAdding Labels and Titles\n\n\n\n\n\n\n\n\nAdjusting Axes and Tick Marks\n\n\n\n\n\n\n\n\nHistogram with Seaborn\n\n\n\n\n\n\n\n\nBoxplot with Seaborn\n\n\n\n\n\n\n\n\nViolin Plot with Seaborn\n\n\n\n\n\n\n\nCommon Pitfall: Matplotlib draws onto the current figure, so forgetting plt.figure() before a new plot (or forgetting plt.show() after) can cause charts to overlap or render in unexpected places. Start each chart with a fresh plt.figure().\n\n\nCommon Pitfall: A bar chart whose y-axis does not start at 0 visually exaggerates differences. When you set plt.ylim(...), keep the lower bound at 0 for bar charts unless you have a deliberate reason not to.\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nCreate line and bar charts (vertical and horizontal) with Matplotlib\nAdd labels, a title, gridlines, and adjust axis limits and tick marks\nDraw a histogram, boxplot, and violin plot with Seaborn\nExplain what each chart type reveals about a distribution or comparison\nFilter a DataFrame to the rows a chart needs before plotting"
   },
   {
     "objectID": "exercises.html#walkthrough-5.1-interactive-charts-and-dashboards-with-plotly",
     "href": "exercises.html#walkthrough-5.1-interactive-charts-and-dashboards-with-plotly",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Walkthrough 5.1: Interactive Charts and Dashboards with Plotly",
     "text": "Walkthrough 5.1: Interactive Charts and Dashboards with Plotly\n\nCommon Pitfall: If your Plotly charts show up blank in a Jupyter notebook, you likely skipped the pyo.init_notebook_mode(connected=True) step from the Kickoff. Run that offline-init cell once per session so the Plotly JavaScript is available.\n\n\nBasic interactive chart\n\n\n\n\n\n\n\n\nAdding interactive elements\n\n\n\n\n\n\n\n\nDesigning a simple dashboard"
   },
   {
     "objectID": "exercises.html#exercise-5.1-interactive-charts-and-dashboards-with-plotly",
     "href": "exercises.html#exercise-5.1-interactive-charts-and-dashboards-with-plotly",
-    "title": "Walkthroughs & Exercises — GenAI-Powered Data Analysis with Python",
+    "title": "Walkthroughs & Exercises: GenAI-Powered Data Analysis with Python",
     "section": "Exercise 5.1: Interactive Charts and Dashboards with Plotly",
     "text": "Exercise 5.1: Interactive Charts and Dashboards with Plotly\n\nBasic Interactive Chart\n\n\n\n\n\n\n\n\nAdding Interactive Elements\n\n\n\n\n\n\n\n\nDesigning a Simple Dashboard\n\n\n\n\n\n\n\nCommon Pitfall: When building subplots, every fig.add_trace() needs the correct row= and col= – a trace added to the wrong panel (or with the index off by one) lands in an unexpected spot or overwrites another. Match each trace to its intended subplot title.\n\n\n\nSelf-Check\nBy the end of this module, you should be able to:\n\nCreate an interactive line and scatter chart with Plotly Express (px.line, px.scatter)\nColor points by a category and customize hover information\nRefine interactivity with fig.update_traces() and fig.update_layout()\nCombine multiple charts into a dashboard with make_subplots() and fig.add_trace()\nInitialize Plotly for the notebook so charts render reliably"
   }
