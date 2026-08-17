@@ -607,7 +607,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBGaWx0ZXIgdGhlIERhdGFG
 <p><strong>Common Pitfall:</strong> Methods like <code>.dropna()</code> and <code>.fillna()</code> return a <em>new</em> DataFrame and leave the original untouched unless you assign the result back (e.g., <code>populations = populations.dropna()</code>). If your “cleaning” seems to have no effect, check whether you forgot to capture the return value.</p>
 </blockquote>
 <blockquote class="blockquote">
-<p><strong>Common Pitfall:</strong> Filling missing numbers with <code>0</code> quietly changes your data’s meaning – a country with a missing GDP is not a country with a GDP of zero. Decide whether dropping, zero-filling, or mean/median-filling is honest for your analysis before you reach for <code>.fillna(0)</code>.</p>
+<p><strong>Common Pitfall:</strong> Filling missing numbers with <code>0</code> quietly changes your data’s meaning, a country with a missing GDP is not a country with a GDP of zero. Decide whether dropping, zero-filling, or mean/median-filling is honest for your analysis before you reach for <code>.fillna(0)</code>.</p>
 </blockquote>
 </section>
 </section>
@@ -777,7 +777,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDb3VudCB0aGUgb2NjdXJy
 <p><strong>Common Pitfall:</strong> When you call <code>.agg()</code> or <code>.groupby(...).agg()</code>, make sure you are grouping on the key you actually mean (e.g., <code>continent</code> vs.&nbsp;<code>region</code>). Grouping on the wrong column gives you a perfectly valid-looking table that answers the wrong question.</p>
 </blockquote>
 <blockquote class="blockquote">
-<p><strong>Common Pitfall:</strong> <code>pd.pivot_table()</code> silently averages with <code>aggfunc='mean'</code> by default. If your summary numbers look surprising, confirm which aggregation function is being applied – a “mean of counts” is rarely what you want.</p>
+<p><strong>Common Pitfall:</strong> <code>pd.pivot_table()</code> silently averages with <code>aggfunc='mean'</code> by default. If your summary numbers look surprising, confirm which aggregation function is being applied, a “mean of counts” is rarely what you want.</p>
 </blockquote>
 </section>
 </section>
@@ -1145,7 +1145,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBGaWx0ZXIgZGF0YSBmb3Ig
 </script>
 </div>
 <blockquote class="blockquote">
-<p><strong>Common Pitfall:</strong> When building subplots, every <code>fig.add_trace()</code> needs the correct <code>row=</code> and <code>col=</code> – a trace added to the wrong panel (or with the index off by one) lands in an unexpected spot or overwrites another. Match each trace to its intended subplot title.</p>
+<p><strong>Common Pitfall:</strong> When building subplots, every <code>fig.add_trace()</code> needs the correct <code>row=</code> and <code>col=</code>, a trace added to the wrong panel (or with the index off by one) lands in an unexpected spot or overwrites another. Match each trace to its intended subplot title.</p>
 </blockquote>
 </section>
 <section id="self-check-4" class="level3">
