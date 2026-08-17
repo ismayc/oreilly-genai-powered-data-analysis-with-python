@@ -316,7 +316,7 @@ economies_fill_value = economies.fillna({
 
 > **Common Pitfall:** Methods like `.dropna()` and `.fillna()` return a *new* DataFrame and leave the original untouched unless you assign the result back (e.g., `populations = populations.dropna()`). If your "cleaning" seems to have no effect, check whether you forgot to capture the return value.
 
-> **Common Pitfall:** Filling missing numbers with `0` quietly changes your data's meaning -- a country with a missing GDP is not a country with a GDP of zero. Decide whether dropping, zero-filling, or mean/median-filling is honest for your analysis before you reach for `.fillna(0)`.
+> **Common Pitfall:** Filling missing numbers with `0` quietly changes your data's meaning, a country with a missing GDP is not a country with a GDP of zero. Decide whether dropping, zero-filling, or mean/median-filling is honest for your analysis before you reach for `.fillna(0)`.
 
 ### Self-Check
 
@@ -454,7 +454,7 @@ By the end of this module, you should be able to:
 
 > **Common Pitfall:** When you call `.agg()` or `.groupby(...).agg()`, make sure you are grouping on the key you actually mean (e.g., `continent` vs. `region`). Grouping on the wrong column gives you a perfectly valid-looking table that answers the wrong question.
 
-> **Common Pitfall:** `pd.pivot_table()` silently averages with `aggfunc='mean'` by default. If your summary numbers look surprising, confirm which aggregation function is being applied -- a "mean of counts" is rarely what you want.
+> **Common Pitfall:** `pd.pivot_table()` silently averages with `aggfunc='mean'` by default. If your summary numbers look surprising, confirm which aggregation function is being applied, a "mean of counts" is rarely what you want.
 
 ### Self-Check
 
@@ -917,7 +917,7 @@ By the end of this module, you should be able to:
 
 ```
 
-> **Common Pitfall:** When building subplots, every `fig.add_trace()` needs the correct `row=` and `col=` -- a trace added to the wrong panel (or with the index off by one) lands in an unexpected spot or overwrites another. Match each trace to its intended subplot title.
+> **Common Pitfall:** When building subplots, every `fig.add_trace()` needs the correct `row=` and `col=`, a trace added to the wrong panel (or with the index off by one) lands in an unexpected spot or overwrites another. Match each trace to its intended subplot title.
 
 ### Self-Check
 
