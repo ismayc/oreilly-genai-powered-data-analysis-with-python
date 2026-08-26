@@ -1,133 +1,291 @@
 [
-  {"h2": "Opening & kickoff framing", "ask": [
-    "While people settle in, type in chat: where are you joining from, and what is one thing you want GenAI to help you do with data?",
-    "Quick poll in chat: rate your pandas comfort from 1 to 5. No wrong answers, this just helps me pace things."
-  ]},
-  {"h2": "W&E #1 · Environment + first prompt", "ask": [
-    "Type in chat: which AI assistant do you have open right now? ChatGPT, Claude, Gemini, Copilot, or something else.",
-    "Type yes or no in chat: have you already used GenAI to write code at work?"
-  ]},
-  {"cell": "# For plotly to load directly in Jupyter notebook", "ask": [
-    "Type ok in chat if your imports all ran clean. If you hit an error, paste it in chat and we will debug it together in a minute."
-  ]},
-  {"h2": "Module 1 framing", "ask": [
-    "One line in chat: what is the messiest dataset you have ever had to clean? What made it messy?"
-  ]},
-  {"cell": "# Load the data from a CSV file", "when": "before", "ask": [
-    {"q": "Before I run this: what do you think happens if the file path is wrong? Type the error name you would expect in chat.",
-     "a": "FileNotFoundError. Pandas raises it with the bad path in the message, so the fix is usually just reading the path carefully."}
-  ]},
-  {"cell": "# Display the first few rows of the DataFrame", "ask": [
-    {"q": "Look at these columns. Which one do you predict has missing values? Type its name in chat.",
-     "a": "unemployment_rate has by far the most gaps (249 missing). Several show up: gross_savings and total_investment 71 each, imports 55, exports 52 (NaN visible for Aruba right in head), inflation_rate 6, gdp_percapita 3."}
-  ]},
-  {"cell": "# Display the information about the DataFrame", "when": "before", "ask": [
-    {"q": "Prediction time: is year stored as a number or as text here? Type number or text in chat.",
-     "a": "Number: info shows year as int64. code, country, and income_group are the text (object) columns."}
-  ]},
-  {"cell": "# Display summary statistics of the DataFrame", "ask": [
-    {"q": "Which row of describe would you check first to spot a data problem? Type min, max, mean, or count, and why in a few words.",
-     "a": "No single right answer: count exposes missing values (columns with count below 660), min and max expose impossible values and outliers. Here min inflation_rate is negative, which is real (deflation), a nice tie-in for the filter cell coming up."}
-  ]},
-  {"cell": "# Remove rows with any missing values", "when": "before", "ask": [
-    {"q": "Quick poll: at work, do you usually drop missing rows or fill them in? Type drop or fill in chat.",
-     "a": "No right answer: drop loses whole rows (dropna here cuts the data hard because unemployment_rate is so sparse), fill invents values. It depends on why the data is missing."}
-  ]},
-  {"cell": "# Replace missing values with a specific value", "ask": [
-    {"q": "What is the risk of filling numeric gaps with 0? Type one word in chat.",
-     "a": "Distortion (also accept bias). A fake 0 drags down means and minimums; 0 unemployment or 0 GDP reads as a real measurement."},
-    "Bonus: ask your AI assistant that same question and see if it flags anything you did not."
-  ]},
-  {"cell": "# Change year to be a string instead of an integer", "ask": [
-    {"q": "Why could a year stored as text bite you later? Type one operation in chat that would break or behave strangely.",
-     "a": "Arithmetic breaks (year + 5, year differences), comparisons like year > 2015 fail against an int, and sorting goes alphabetical. Filtering for == 2020 silently misses '2020' as text."}
-  ]},
-  {"cell": "# Filter rows where inflation_rate is less than 0 and income_group is", "when": "before", "ask": [
-    {"q": "How do you combine two filter conditions in pandas? Type the symbol in chat. Careful, it is not the word and.",
-     "a": "& (ampersand), with parentheses around each condition. Plain Python and raises the ambiguous-truth-value error."}
-  ]},
-  {"h2": "Module 2 framing", "ask": [
-    "One line in chat: what summary does your boss ask for most often? Averages, counts, totals, or something else?"
-  ]},
-  {"cell": "# Get the mean gdp per capita for each income_group", "when": "before", "ask": [
-    {"q": "Prediction: which income group will have the highest average GDP per capita? Type your guess in chat before I run it.",
-     "a": "High income, around $33,800, roughly four times the next group. Order after that: Not classified ~$7,800, Upper middle ~$6,700, Lower middle ~$2,300, Low ~$690."}
-  ]},
-  {"cell": "# Calculate the median gdp_percapita and inflation_rate for each incom", "when": "before", "ask": [
-    {"q": "Why might the median beat the mean for GDP per capita? Type one word in chat.",
-     "a": "Outliers (or skew). GDP per capita is strongly right-skewed, so a few very rich countries pull the mean up while the median stays put."}
-  ]},
-  {"cell": "# Create a pivot table of gdp_percapita and inflation_rate by income_g", "when": "before", "ask": [
-    "Quick poll: where do you build pivot tables today? Type excel, sql, pandas, or never."
-  ]},
-  {"cell": "# Count the occurrences of each income_group", "when": "before", "ask": [
-    {"q": "Guess: which income group shows up most often in this data? Type it in chat.",
-     "a": "High income, 180 rows. Then Lower middle 159, Upper middle 147, Low 72, Not classified 3."}
-  ]},
-  {"h2": "Module 3 framing", "ask": [
-    "Type in chat: what was the last error message that really stumped you? A few words is fine.",
-    {"q": "When you paste an error into ChatGPT, what do you include? Just the error, the code too, or more? Type it in chat.",
-     "a": "Best practice from this module: the code, the full traceback, and one sentence of intent, plus a few rows of the data. That is exactly what prompt.md's debugging-tutor prompt sets up."}
-  ]},
-  {"cell": "### 1", "when": "before", "ask": [
-    {"q": "Spot the bug before the AI does: what is wrong with this line? Type your diagnosis in chat.",
-     "a": "Typo: .hed instead of .head(), so an AttributeError. Also worth noting .head without parentheses returns the method instead of calling it."}
-  ]},
-  {"cell": "### 2", "when": "before", "ask": [
-    {"q": "This one is sneakier. What will go wrong here? Type your guess in chat before we ask the AI.",
-     "a": ".size is a built-in DataFrame property (rows times columns), not the size column, so .mean() is called on an integer and fails. Fix: populations['size'].mean(). Bracket notation whenever a column name clashes with a pandas attribute."}
-  ]},
-  {"cell": "### 3", "when": "before", "ask": [
-    {"q": "One more: what will Python complain about here? Type the error type in chat if you know it.",
-     "a": "KeyError: column names are case-sensitive. It is life_expectancy, all lowercase, not Life_Expectancy."}
-  ]},
-  {"h2": "Day 1 wrap", "ask": [
-    "Type in chat: one thing from today you will try at work this week.",
-    "Any question you did not get to ask? Drop it in chat now. I will answer it or bring it back tomorrow morning."
-  ]},
-  {"h2": "W&E #5 · Static visualization", "ask": [
-    "Did anyone try the take-home? Type in chat: one summary or question the AI suggested for the data. If you skipped it, no problem.",
-    "Warm-up while we get set: what chart type do you reach for most at work? Type bar, line, pie, scatter, or other in chat.",
-    "Yesterday most questions came in the first two hours. Challenge for today: get at least one question or guess into chat every hour. I read everything."
-  ]},
-  {"cell": "# Filter data for a specific country", "nth": 1, "ask": [
-    "Which country should we look at next? Type a country in chat and I will run one live."
-  ]},
-  {"cell": "# Bar chart of gdp_percapita for different Caribbean countries in 2020", "when": "before", "ask": [
-    {"q": "Design call: these country names are long. Vertical or horizontal bars? Type v or h in chat.",
-     "a": "Horizontal is the usual answer for long labels since names stay readable without rotating. The walkthrough shows both, vertical first, then barh."}
-  ]},
-  {"cell": "# Histogram of gdp_percapita", "when": "before", "ask": [
-    {"q": "Prediction: will GDP per capita be skewed right, skewed left, or roughly symmetric? Type your guess in chat.",
-     "a": "Skewed right, strongly (skewness about 2.2). Most countries cluster low, a long tail of rich countries stretches right. Ties back to why the median beat the mean yesterday."}
-  ]},
-  {"cell": "# Boxplot of gdp_percapita by income_group", "ask": [
-    {"q": "What does a dot outside the whiskers mean? Type it in chat.",
-     "a": "An outlier: a point beyond 1.5 times the IQR past the box. Worth investigating, not automatically wrong."}
-  ]},
-  {"cell": "# Violin plot of gdp_percapita by income_group", "ask": [
-    {"q": "Quick poll: which would you put in front of an executive, the boxplot or the violin? Type b or v, plus three words on why.",
-     "a": "No right answer: the boxplot is more familiar and reads faster, the violin shows the full distribution shape. Most executive audiences get the boxplot."}
-  ]},
-  {"h2": "Module 5 framing", "ask": [
-    "One line in chat: tell me about a time an interactive chart actually helped you or your audience. If never, type never and that is useful too."
-  ]},
-  {"cell": "# Create an interactive scatter plot", "ask": [
-    {"q": "Hover over a few points on your side. Type in chat one thing this tells you that the static scatter could not.",
-     "a": "Hover shows the exact values and which country each point is (hover_name gives the code), and you can zoom into the crowded low-GDP cluster. A static scatter hides point identity."}
-  ]},
-  {"cell": "# Filter data for the year 2020", "ask": [
-    "If you could add a third panel to this dashboard, what would it show? Type it in chat."
-  ]},
-  {"h2": "Storytelling framing", "ask": [
-    "Think of the last chart you shared at work. Type its headline message in one sentence in chat. A message, not a title."
-  ]},
-  {"h2": "W&E #7 · Storytelling", "ask": [
-    {"q": "Which chart from today would you lead with for a CFO, and why? Type your pick in chat.",
-     "a": "Opinion question. Steer the debrief toward one chart, one message: pick the chart whose headline answers the CFO's question, usually a bar or line, not the most impressive-looking one."}
-  ]},
-  {"h2": "How GenAI works & close", "ask": [
-    "Type in chat: what surprised you most about how these models actually work?",
-    "Last call: what is one question about GenAI you still want answered before we close?"
-  ]}
+ {
+  "h2": "Opening & kickoff framing",
+  "ask": [
+   "While people settle in, type in chat: where are you joining from, and what is one thing you want GenAI to help you do with data?",
+   "Quick poll in chat: rate your pandas comfort from 1 to 5. No wrong answers, this just helps me pace things."
+  ]
+ },
+ {
+  "h2": "W&E #1 · Environment + first prompt",
+  "ask": [
+   "Type in chat: which AI assistant do you have open right now? ChatGPT, Claude, Gemini, Copilot, or something else.",
+   "Type yes or no in chat: have you already used GenAI to write code at work?"
+  ]
+ },
+ {
+  "cell": "# For plotly to load directly in Jupyter notebook",
+  "ask": [
+   "Type ok in chat if your imports all ran clean. If you hit an error, paste it in chat and we will debug it together in a minute."
+  ]
+ },
+ {
+  "h2": "Module 1 framing",
+  "ask": [
+   "One line in chat: what is the messiest dataset you have ever had to clean? What made it messy?"
+  ]
+ },
+ {
+  "cell": "# Load the data from a CSV file",
+  "when": "before",
+  "ask": [
+   {
+    "q": "Before I run this: what do you think happens if the file path is wrong? Type the error name you would expect in chat.",
+    "a": "FileNotFoundError. Pandas raises it with the bad path in the message, so the fix is usually just reading the path carefully."
+   }
+  ]
+ },
+ {
+  "cell": "# Display the first few rows of the DataFrame",
+  "ask": [
+   {
+    "q": "Look at these columns. Which one do you predict has missing values? Type its name in chat.",
+    "a": "gross_savings has by far the most gaps (221 missing). Then exports and imports 164 each, total_investment 137, inflation_rate 62, unemployment_rate 55, gdp_percapita 12. Aruba's gaps are visible right in head: unemployment_rate, exports and imports are all empty for it, and its whole 2025 row is blank because the 2025 figures are not published yet."
+   }
+  ]
+ },
+ {
+  "cell": "# Display the information about the DataFrame",
+  "when": "before",
+  "ask": [
+   {
+    "q": "Prediction time: is year stored as a number or as text here? Type number or text in chat.",
+    "a": "Number: info shows year as int64. code, country, and income_group are the text (object) columns."
+   }
+  ]
+ },
+ {
+  "cell": "# Display summary statistics of the DataFrame",
+  "ask": [
+   {
+    "q": "Which row of describe would you check first to spot a data problem? Type min, max, mean, or count, and why in a few words.",
+    "a": "No single right answer: count exposes missing values (columns with count below 748), min and max expose impossible values and outliers. Here min inflation_rate is negative, which is real (deflation), a nice tie-in for the filter cell coming up."
+   }
+  ]
+ },
+ {
+  "cell": "# Remove rows with any missing values",
+  "when": "before",
+  "ask": [
+   {
+    "q": "Quick poll: at work, do you usually drop missing rows or fill them in? Type drop or fill in chat.",
+    "a": "No right answer: drop loses whole rows (dropna here cuts the data hard because unemployment_rate is so sparse), fill invents values. It depends on why the data is missing."
+   }
+  ]
+ },
+ {
+  "cell": "# Replace missing values with a specific value",
+  "ask": [
+   {
+    "q": "What is the risk of filling numeric gaps with 0? Type one word in chat.",
+    "a": "Distortion (also accept bias). A fake 0 drags down means and minimums; 0 unemployment or 0 GDP reads as a real measurement."
+   },
+   "Bonus: ask your AI assistant that same question and see if it flags anything you did not."
+  ]
+ },
+ {
+  "cell": "# Change year to be a string instead of an integer",
+  "ask": [
+   {
+    "q": "Why could a year stored as text bite you later? Type one operation in chat that would break or behave strangely.",
+    "a": "Arithmetic breaks (year + 5, year differences), comparisons like year > 2015 fail against an int, and sorting goes alphabetical. Filtering for == 2020 silently misses '2020' as text."
+   }
+  ]
+ },
+ {
+  "cell": "# Filter rows where inflation_rate is less than 0 and income_group is",
+  "when": "before",
+  "ask": [
+   {
+    "q": "How do you combine two filter conditions in pandas? Type the symbol in chat. Careful, it is not the word and.",
+    "a": "& (ampersand), with parentheses around each condition. Plain Python and raises the ambiguous-truth-value error."
+   }
+  ]
+ },
+ {
+  "h2": "Module 2 framing",
+  "ask": [
+   "One line in chat: what summary does your boss ask for most often? Averages, counts, totals, or something else?"
+  ]
+ },
+ {
+  "cell": "# Get the mean gdp per capita for each income_group",
+  "when": "before",
+  "ask": [
+   {
+    "q": "Prediction: which income group will have the highest average GDP per capita? Type your guess in chat before I run it.",
+    "a": "High income, around $38,100, roughly five times the next group. Order after that: Upper middle ~$7,600, Not classified ~$5,700, Lower middle ~$2,600, Low ~$740."
+   }
+  ]
+ },
+ {
+  "cell": "# Calculate the median gdp_percapita and inflation_rate for each incom",
+  "when": "before",
+  "ask": [
+   {
+    "q": "Why might the median beat the mean for GDP per capita? Type one word in chat.",
+    "a": "Outliers (or skew). GDP per capita is strongly right-skewed, so a few very rich countries pull the mean up while the median stays put."
+   }
+  ]
+ },
+ {
+  "cell": "# Create a pivot table of gdp_percapita and inflation_rate by income_g",
+  "when": "before",
+  "ask": [
+   "Quick poll: where do you build pivot tables today? Type excel, sql, pandas, or never."
+  ]
+ },
+ {
+  "cell": "# Count the occurrences of each income_group",
+  "when": "before",
+  "ask": [
+   {
+    "q": "Guess: which income group shows up most often in this data? Type it in chat.",
+    "a": "High income, 240 rows. Then Lower middle 212, Upper middle 196, Low 96, Not classified 4."
+   }
+  ]
+ },
+ {
+  "h2": "Module 3 framing",
+  "ask": [
+   "Type in chat: what was the last error message that really stumped you? A few words is fine.",
+   {
+    "q": "When you paste an error into ChatGPT, what do you include? Just the error, the code too, or more? Type it in chat.",
+    "a": "Best practice from this module: the code, the full traceback, and one sentence of intent, plus a few rows of the data. That is exactly what prompt.md's debugging-tutor prompt sets up."
+   }
+  ]
+ },
+ {
+  "cell": "### 1",
+  "when": "before",
+  "ask": [
+   {
+    "q": "Spot the bug before the AI does: what is wrong with this line? Type your diagnosis in chat.",
+    "a": "Typo: .hed instead of .head(), so an AttributeError. Also worth noting .head without parentheses returns the method instead of calling it."
+   }
+  ]
+ },
+ {
+  "cell": "### 2",
+  "when": "before",
+  "ask": [
+   {
+    "q": "This one is sneakier. What will go wrong here? Type your guess in chat before we ask the AI.",
+    "a": ".size is a built-in DataFrame property (rows times columns), not the size column, so .mean() is called on an integer and fails. Fix: populations['size'].mean(). Bracket notation whenever a column name clashes with a pandas attribute."
+   }
+  ]
+ },
+ {
+  "cell": "### 3",
+  "when": "before",
+  "ask": [
+   {
+    "q": "One more: what will Python complain about here? Type the error type in chat if you know it.",
+    "a": "KeyError: column names are case-sensitive. It is life_expectancy, all lowercase, not Life_Expectancy."
+   }
+  ]
+ },
+ {
+  "h2": "Day 1 wrap",
+  "ask": [
+   "Type in chat: one thing from today you will try at work this week.",
+   "Any question you did not get to ask? Drop it in chat now. I will answer it or bring it back tomorrow morning."
+  ]
+ },
+ {
+  "h2": "W&E #5 · Static visualization",
+  "ask": [
+   "Did anyone try the take-home? Type in chat: one summary or question the AI suggested for the data. If you skipped it, no problem.",
+   "Warm-up while we get set: what chart type do you reach for most at work? Type bar, line, pie, scatter, or other in chat.",
+   "Yesterday most questions came in the first two hours. Challenge for today: get at least one question or guess into chat every hour. I read everything."
+  ]
+ },
+ {
+  "cell": "# Filter data for a specific country",
+  "nth": 1,
+  "ask": [
+   "Which country should we look at next? Type a country in chat and I will run one live."
+  ]
+ },
+ {
+  "cell": "# Bar chart of gdp_percapita for different Caribbean countries in 2020",
+  "when": "before",
+  "ask": [
+   {
+    "q": "Design call: these country names are long. Vertical or horizontal bars? Type v or h in chat.",
+    "a": "Horizontal is the usual answer for long labels since names stay readable without rotating. The walkthrough shows both, vertical first, then barh."
+   }
+  ]
+ },
+ {
+  "cell": "# Histogram of gdp_percapita",
+  "when": "before",
+  "ask": [
+   {
+    "q": "Prediction: will GDP per capita be skewed right, skewed left, or roughly symmetric? Type your guess in chat.",
+    "a": "Skewed right, strongly (skewness about 2.4). Most countries cluster low, a long tail of rich countries stretches right. Ties back to why the median beat the mean yesterday."
+   }
+  ]
+ },
+ {
+  "cell": "# Boxplot of gdp_percapita by income_group",
+  "ask": [
+   {
+    "q": "What does a dot outside the whiskers mean? Type it in chat.",
+    "a": "An outlier: a point beyond 1.5 times the IQR past the box. Worth investigating, not automatically wrong."
+   }
+  ]
+ },
+ {
+  "cell": "# Violin plot of gdp_percapita by income_group",
+  "ask": [
+   {
+    "q": "Quick poll: which would you put in front of an executive, the boxplot or the violin? Type b or v, plus three words on why.",
+    "a": "No right answer: the boxplot is more familiar and reads faster, the violin shows the full distribution shape. Most executive audiences get the boxplot."
+   }
+  ]
+ },
+ {
+  "h2": "Module 5 framing",
+  "ask": [
+   "One line in chat: tell me about a time an interactive chart actually helped you or your audience. If never, type never and that is useful too."
+  ]
+ },
+ {
+  "cell": "# Create an interactive scatter plot",
+  "ask": [
+   {
+    "q": "Hover over a few points on your side. Type in chat one thing this tells you that the static scatter could not.",
+    "a": "Hover shows the exact values and which country each point is (hover_name gives the code), and you can zoom into the crowded low-GDP cluster. A static scatter hides point identity."
+   }
+  ]
+ },
+ {
+  "cell": "# Filter data for the year 2020",
+  "ask": [
+   "If you could add a third panel to this dashboard, what would it show? Type it in chat."
+  ]
+ },
+ {
+  "h2": "Storytelling framing",
+  "ask": [
+   "Think of the last chart you shared at work. Type its headline message in one sentence in chat. A message, not a title."
+  ]
+ },
+ {
+  "h2": "W&E #7 · Storytelling",
+  "ask": [
+   {
+    "q": "Which chart from today would you lead with for a CFO, and why? Type your pick in chat.",
+    "a": "Opinion question. Steer the debrief toward one chart, one message: pick the chart whose headline answers the CFO's question, usually a bar or line, not the most impressive-looking one."
+   }
+  ]
+ },
+ {
+  "h2": "How GenAI works & close",
+  "ask": [
+   "Type in chat: what surprised you most about how these models actually work?",
+   "Last call: what is one question about GenAI you still want answered before we close?"
+  ]
+ }
 ]
