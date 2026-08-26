@@ -542,7 +542,7 @@ populations['double_size'] = populations['size'].apply(lambda x: x * 2, axis=1)
 
 ### 8
 
-populations['fertility_rate'].fillna(0)
+populations['infant_mortality'].fillna(0)
 ```
 
 ### Self-Check

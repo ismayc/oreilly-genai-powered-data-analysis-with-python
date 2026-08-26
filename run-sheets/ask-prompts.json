@@ -40,7 +40,7 @@
   "ask": [
    {
     "q": "Look at these columns. Which one do you predict has missing values? Type its name in chat.",
-    "a": "gross_savings has by far the most gaps (221 missing). Then exports and imports 164 each, total_investment 137, inflation_rate 62, unemployment_rate 55, gdp_percapita 12. Aruba's gaps are visible right in head: unemployment_rate, exports and imports are all empty for it, and its whole 2025 row is blank because the 2025 figures are not published yet."
+    "a": "gross_savings has by far the most gaps (149 missing). Then exports and imports 132 each, total_investment 106, unemployment_rate 55, inflation_rate 52, gdp_percapita 8. Aruba's gaps are visible right in head: unemployment_rate, exports and imports are empty for it in every year, and its 2024 gross_savings and inflation_rate are missing too."
    }
   ]
  },
@@ -88,7 +88,7 @@
   "ask": [
    {
     "q": "Why could a year stored as text bite you later? Type one operation in chat that would break or behave strangely.",
-    "a": "Arithmetic breaks (year + 5, year differences), comparisons like year > 2015 fail against an int, and sorting goes alphabetical. Filtering for == 2020 silently misses '2020' as text."
+    "a": "Arithmetic breaks (year + 5, year differences), comparisons like year > 2016 fail against an int, and sorting goes alphabetical. Filtering for == 2020 silently misses '2020' as text."
    }
   ]
  },

@@ -240,8 +240,8 @@ populations.dropna(how='any')
 ```
 
 ```{python}
-# Remove rows with missing values in fertility_rate and life_expectancy
-populations.dropna(subset=['fertility_rate', 'life_expectancy'])
+# Remove rows with missing values in infant_mortality
+populations.dropna(subset=['infant_mortality'])
 ```
 
 #### Replace missing values with specific value
@@ -252,6 +252,8 @@ populations.dropna(subset=['fertility_rate', 'life_expectancy'])
 populations_fill_value = populations.fillna({
     'fertility_rate': 0,
     'life_expectancy': 0,
+    'infant_mortality': 0,
+    'sanitation': 0,
     'size': 0,
     'continent': 'Unknown',
     'region': 'Unknown'
@@ -526,7 +528,7 @@ populations['double_size'] = populations['size'].apply(lambda x: x * 2, axis=1)
 
 ### 8
 
-populations['fertility_rate'].fillna(0)
+populations['infant_mortality'].fillna(0)
 ```
 
 ### Self-Check
