@@ -332,31 +332,35 @@ economies.groupby('income_group')['gdp_percapita'].mean()
 #### Applying a function element-wise with `map()`
 
 ```{python}
-# Convert income_group to uppercase using map()
-economies_plus = economies.copy()
-economies_plus['income_group_upper'] = economies['income_group'].map(str.upper)
-economies_plus.head()
+# Map each income_group to a short code using map() and a dictionary
+income_codes = {'High income': 'HIC',
+                'Upper middle income': 'UMC',
+                'Lower middle income': 'LMC',
+                'Low income': 'LIC',
+                'Not classified': 'NC'}
+economies.assign(
+    income_code=economies['income_group'].map(income_codes)
+).head()
 ```
 
 #### Applying a Function to Groups with `groupby()` and `agg()`
 
 ```{python}
 # Calculate the median gdp_percapita and inflation_rate for each income_group
-economies.groupby('income_group').agg({
-    'gdp_percapita': 'median',
-    'inflation_rate': 'median'
-})
+economies.groupby('income_group').agg(
+    gdp_median=('gdp_percapita', 'median'),
+    inflation_median=('inflation_rate', 'median')
+)
 ```
 
 ### Summary tables
 
 ```{python}
 # Create a pivot table of gdp_percapita and inflation_rate by income_group and year
-pd.pivot_table(
-    economies,
+economies.pivot_table(
     values=['gdp_percapita', 'inflation_rate'],
-    index=['income_group'],
-    columns=['year'],
+    index='income_group',
+    columns='year',
     aggfunc='mean'
 )
 ```
@@ -391,31 +395,37 @@ populations.groupby('continent')['life_expectancy'].mean()
 #### Applying a function element-wise with `map()`
 
 ```{python}
-# Convert continent to uppercase using map()
-populations_plus = populations.copy()
-populations_plus['continent_upper'] = populations['continent'].map(str.upper)
-populations_plus.head()
+# Map each continent to a broader region using map() and a dictionary
+# (North America and South America combine into 'Americas')
+continent_regions = {'Africa': 'Africa',
+                     'Asia': 'Asia',
+                     'Europe': 'Europe',
+                     'North America': 'Americas',
+                     'South America': 'Americas',
+                     'Oceania': 'Oceania'}
+populations.assign(
+    region_group=populations['continent'].map(continent_regions)
+).head()
 ```
 
 #### Applying a function to groups with `groupby()` and `agg()`
 
 ```{python}
 # Calculate the median fertility rate and life expectancy for each continent
-populations.groupby('continent').agg({
-    'fertility_rate': 'median',
-    'life_expectancy': 'median'
-})
+populations.groupby('continent').agg(
+    fertility_median=('fertility_rate', 'median'),
+    life_expectancy_median=('life_expectancy', 'median')
+)
 ```
 
 ### Summary Tables
 
 ```{python}
 # Create a pivot table of fertility rate and life expectancy by continent and year
-pd.pivot_table(
-    populations,
+populations.pivot_table(
     values=['fertility_rate', 'life_expectancy'],
-    index=['continent'],
-    columns=['year'],
+    index='continent',
+    columns='year',
     aggfunc='mean'
 )
 ```
@@ -438,7 +448,7 @@ populations['region'].value_counts()
 
 > **Common Pitfall:** When you call `.agg()` or `.groupby(...).agg()`, make sure you are grouping on the key you actually mean (e.g., `continent` vs. `region`). Grouping on the wrong column gives you a perfectly valid-looking table that answers the wrong question.
 
-> **Common Pitfall:** `pd.pivot_table()` silently averages with `aggfunc='mean'` by default. If your summary numbers look surprising, confirm which aggregation function is being applied, a "mean of counts" is rarely what you want.
+> **Common Pitfall:** `.pivot_table()` silently averages with `aggfunc='mean'` by default. If your summary numbers look surprising, confirm which aggregation function is being applied, a "mean of counts" is rarely what you want.
 
 ### Self-Check
 
@@ -447,7 +457,7 @@ By the end of this module, you should be able to:
 - [ ] Group rows with `.groupby()` and compute a summary statistic per group
 - [ ] Apply a function element-wise to a column with `.map()`
 - [ ] Use `.agg()` to apply different aggregations to different columns
-- [ ] Build a summary grid with `pd.pivot_table()` and choose its index, columns, and `aggfunc`
+- [ ] Build a summary grid with `.pivot_table()` and choose its index, columns, and `aggfunc`
 - [ ] Count categories with `pd.crosstab()` and `.value_counts()`
 
 ---
@@ -842,7 +852,7 @@ data_2020 = economies[economies['year'] == 2020]
 # Create a subplot figure with 1 row and 2 columns
 fig = make_subplots(rows=1, cols=2,
                     subplot_titles=('GDP Per Capita Over Years for Afghanistan',
-                                    'GDP Per Capita for Different Countries in 2020'))
+                                    'GDP Per Capita in Western Europe in 2020'))
 
 # Line chart of GDP Per Capita for Afghanistan
 afg_data = economies[economies['code'] == 'AFG']
@@ -850,8 +860,10 @@ line_chart = go.Scatter(x=afg_data['year'], y=afg_data['gdp_percapita'],
                         mode='lines+markers', name='Afghanistan');
 fig.add_trace(line_chart, row=1, col=1);
 
-# Bar chart of GDP Per Capita for different countries in 2020
-bar_chart = go.Bar(x=data_2020['code'], y=data_2020['gdp_percapita'], name='2020')
+# Bar chart of GDP Per Capita for Western European countries in 2020
+western_europe = ['AUT', 'BEL', 'CHE', 'DEU', 'FRA', 'LUX', 'NLD']
+western_data_2020 = data_2020[data_2020['code'].isin(western_europe)]
+bar_chart = go.Bar(x=western_data_2020['code'], y=western_data_2020['gdp_percapita'], name='2020')
 fig.add_trace(bar_chart, row=1, col=2);
 
 # Update layout

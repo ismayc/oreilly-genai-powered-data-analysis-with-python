@@ -345,7 +345,12 @@ By the end of this module, you should be able to:
 #### Applying a function element-wise with `map()`
 
 ```{python}
-# Convert income_group to uppercase using map()
+# Map each income_group to a short code using map() and a dictionary
+income_codes = {'High income': 'HIC',
+                'Upper middle income': 'UMC',
+                'Lower middle income': 'LMC',
+                'Low income': 'LIC',
+                'Not classified': 'NC'}
 
 
 
@@ -406,7 +411,14 @@ By the end of this module, you should be able to:
 #### Applying a function element-wise with `map()`
 
 ```{python}
-# Convert continent to uppercase using map()
+# Map each continent to a broader region using map() and a dictionary
+# (North America and South America combine into 'Americas')
+continent_regions = {'Africa': 'Africa',
+                     'Asia': 'Asia',
+                     'Europe': 'Europe',
+                     'North America': 'Americas',
+                     'South America': 'Americas',
+                     'Oceania': 'Oceania'}
 
 
 
@@ -454,7 +466,7 @@ By the end of this module, you should be able to:
 
 > **Common Pitfall:** When you call `.agg()` or `.groupby(...).agg()`, make sure you are grouping on the key you actually mean (e.g., `continent` vs. `region`). Grouping on the wrong column gives you a perfectly valid-looking table that answers the wrong question.
 
-> **Common Pitfall:** `pd.pivot_table()` silently averages with `aggfunc='mean'` by default. If your summary numbers look surprising, confirm which aggregation function is being applied, a "mean of counts" is rarely what you want.
+> **Common Pitfall:** `.pivot_table()` silently averages with `aggfunc='mean'` by default. If your summary numbers look surprising, confirm which aggregation function is being applied, a "mean of counts" is rarely what you want.
 
 ### Self-Check
 
@@ -463,7 +475,7 @@ By the end of this module, you should be able to:
 - [ ] Group rows with `.groupby()` and compute a summary statistic per group
 - [ ] Apply a function element-wise to a column with `.map()`
 - [ ] Use `.agg()` to apply different aggregations to different columns
-- [ ] Build a summary grid with `pd.pivot_table()` and choose its index, columns, and `aggfunc`
+- [ ] Build a summary grid with `.pivot_table()` and choose its index, columns, and `aggfunc`
 - [ ] Count categories with `pd.crosstab()` and `.value_counts()`
 
 ---
@@ -844,7 +856,7 @@ By the end of this module, you should be able to:
 
 
 
-# Bar chart of GDP Per Capita for different countries in 2020
+# Bar chart of GDP Per Capita for Western European countries in 2020
 
 
 
