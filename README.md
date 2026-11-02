@@ -76,6 +76,12 @@ The major files in this repository are
     # For plotly to load directly in Jupyter notebook
     import plotly.offline as pyo
     pyo.init_notebook_mode(connected=True)
+    
+    # Colab draws plotly with its own renderer
+    import sys
+    if "google.colab" in sys.modules:
+        import plotly.io as pio
+        pio.renderers.default = "colab"
     ```
     
   - Run the cell (`Shift + Enter`). If no errors appear, the libraries are installed correctly.
