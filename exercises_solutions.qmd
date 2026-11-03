@@ -152,15 +152,14 @@ economies_cleaned_any
 
 ```{python}
 # Remove rows with missing values in specific columns
-economies_cleaned_subset = economies.dropna(subset=['exports', 'imports'])
-economies_cleaned_subset
+economies.dropna(subset=['exports', 'imports'])
 ```
 
 #### Replace missing values with specific value
 
 ```{python}
 # Replace missing values with a specific value (e.g., 0 for numerical columns, 'Unknown' for categorical columns)
-economies_fill_value = economies.fillna({
+economies.fillna({
     'gdp_percapita': 0,
     'gross_savings': 0,
     'inflation_rate': 0,
@@ -169,10 +168,7 @@ economies_fill_value = economies.fillna({
     'exports': 0,
     'imports': 0,
     'income_group': 'Unknown'
-})
-
-# Display the DataFrame after replacing missing values with specific values
-economies_fill_value.head()
+}).head()
 ```
 
 This can be extended to replace missing values with the mean, median, or mode of the column too.
@@ -199,8 +195,7 @@ economies_int_year.info()
 
 ```{python}
 # Rename the 'income_group' column to 'income_category'
-economies_renamed = economies.rename(columns={'income_group': 'income_category'})
-economies_renamed.head()
+economies.rename(columns={'income_group': 'income_category'}).head()
 ```
 
 ### Filtering rows based on conditions
@@ -265,7 +260,7 @@ populations.dropna(subset=['infant_mortality'])
 ```{python}
 # Replace missing values with a specific value (e.g., 0 for numerical columns,
 # 'Unknown' for categorical columns)
-populations_fill_value = populations.fillna({
+populations.fillna({
     'fertility_rate': 0,
     'life_expectancy': 0,
     'infant_mortality': 0,
@@ -274,7 +269,6 @@ populations_fill_value = populations.fillna({
     'continent': 'Unknown',
     'region': 'Unknown'
 })
-populations_fill_value
 ```
 
 ### Convert a Column to a Different Data Type and Rename a Column
@@ -297,8 +291,7 @@ populations.dtypes
 
 ```{python}
 # Rename the 'fertility_rate' column to 'fertility'
-populations_renamed = populations.rename(columns={'fertility_rate': 'fertility'})
-populations_renamed
+populations.rename(columns={'fertility_rate': 'fertility'})
 ```
 
 #### Filter a DataFrame

@@ -153,7 +153,7 @@ of it throughout the course, and I'll give tips along the way too.
 ```{python}
 #| eval: false
 # Replace missing values with a specific value (e.g., 0 for numerical columns, 'Unknown' for categorical columns)
-economies_fill_value = economies.fillna({
+economies.fillna({
     'gdp_percapita': 0,
     'gross_savings': 0,
     'inflation_rate': 0,
@@ -163,9 +163,6 @@ economies_fill_value = economies.fillna({
     'imports': 0,
     'income_group': 'Unknown'
 })
-
-# Display the DataFrame after replacing missing values with specific values
-
 ```
 
 ### Convert a column to a different data type
